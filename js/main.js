@@ -215,20 +215,47 @@ function buildSummary() {
   summary.innerHTML = html;
 }
 
-// Form Submit via Formsubmit.co
+// Form Submit via own SMTP backend
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    // Update subject with selected services
-    const services = Array.from(document.querySelectorAll('input[name="services"]:checked'))
-      .map(cb => cb.value).join(', ');
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-    const subjectField = this.querySelector('input[name="_subject"]');
-    if (subjectField) {
-      subjectField.value = 'Neue Anfrage über Website: ' + services;
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Wird gesendet...';
+
+    const data = {
+      services: Array.from(document.querySelectorAll('input[name="services"]:checked')).map(cb => cb.value),
+      projectType: document.getElementById('project-type').value,
+      areaSize: document.getElementById('area-size').value,
+      timeframe: document.getElementById('timeframe').value,
+      message: document.getElementById('message').value,
+      firstName: document.getElementById('first-name').value,
+      lastName: document.getElementById('last-name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value,
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error('Fehler beim Senden');
+
+      document.getElementById('formSuccess').style.display = 'block';
+      contactForm.style.display = 'none';
+      document.querySelector('.form-progress').style.display = 'none';
+    } catch (err) {
+      alert('Fehler beim Senden der Anfrage. Bitte versuchen Sie es erneut oder rufen Sie uns an.');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
     }
-
-    // Form submits normally via POST to formsubmit.co
   });
 }
 
@@ -336,3 +363,9 @@ function setActivePageNav() {
 }
 
 setActivePageNav();
+
+// --- Expose functions used by inline onclick handlers ---
+window.nextStep = nextStep;
+window.prevStep = prevStep;
+window.openLightbox = openLightbox;
+window.closeLightbox = closeLightbox;
