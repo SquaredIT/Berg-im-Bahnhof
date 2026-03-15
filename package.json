@@ -5,9 +5,8 @@
   "description": "",
   "scripts": {
     "dev": "vite",
-    "dev:server": "node server.js",
     "build": "vite build",
-    "start": "vite build && node server.js"
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -22,11 +21,5 @@
   "homepage": "https://github.com/SquaredIT/Berg-im-Bahnhof#readme",
   "devDependencies": {
     "vite": "^8.0.0"
-  },
-  "dependencies": {
-    "cors": "^2.8.6",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "nodemailer": "^8.0.2"
   }
 }
