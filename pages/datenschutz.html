@@ -18,82 +18,48 @@
     <div class="header__inner">
       <a href="../index.html" class="header__logo"><img src="../images/logo.png" alt="Berg im Bahnhof Logo" width="48" height="48"><div class="header__logo-text">Berg im Bahnhof<span>Malerfachbetrieb</span></div></a>
       <nav class="nav">
-        <ul class="nav__list"><li><a href="../index.html#leistungen" class="nav__link">Leistungen</a></li><li><a href="../index.html#galerie" class="nav__link">Galerie</a></li><li><a href="../index.html#ueber-uns" class="nav__link">Über uns</a></li><li><a href="../index.html#kontakt" class="nav__link">Kontakt</a></li></ul>
+        <ul class="nav__list">
+          <li class="nav__item nav__item--dropdown">
+            <a href="../index.html#leistungen" class="nav__link">
+              Leistungen
+              <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+            <ul class="nav__dropdown">
+              <li><a href="innenmalerei.html">Innenmalerei</a></li>
+              <li><a href="aussenfassaden.html">Außenfassaden</a></li>
+              <li><a href="bodenbelaege.html">Bodenbeläge</a></li>
+              <li><a href="waermedaemmung.html">Wärmedämmung</a></li>
+              <li><a href="farbberatung.html">Farbberatung</a></li>
+            </ul>
+          </li>
+          <li><a href="../index.html#galerie" class="nav__link">Galerie</a></li>
+          <li><a href="../index.html#ueber-uns" class="nav__link">Über uns</a></li>
+          <li><a href="../index.html#kontakt" class="nav__link">Kontakt</a></li>
+        </ul>
         <a href="tel:067627269" class="nav__phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>06762 7269</a>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Menü"><span></span><span></span><span></span></button>
     </div>
   </header>
-  <div class="mobile-menu" id="mobileMenu"><a href="../index.html#leistungen" class="mobile-menu__link">Leistungen</a><a href="../index.html#galerie" class="mobile-menu__link">Galerie</a><a href="../index.html#ueber-uns" class="mobile-menu__link">Über uns</a><a href="../index.html#kontakt" class="mobile-menu__link">Kontakt</a></div>
-
-  <section class="legal">
-    <div class="container">
-      <div class="legal__content">
-        <h1>Datenschutzerklärung</h1>
-
-        <h2>1. Datenschutz auf einen Blick</h2>
-        <h3>Allgemeine Hinweise</h3>
-        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
-
-        <h3>Datenerfassung auf dieser Website</h3>
-        <p><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong></p>
-        <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber:<br>
-        Berg im Bahnhof – Malerfachbetrieb<br>
-        Adrian Poprawa<br>
-        Bahnhofstraße 56, 56288 Kastellaun<br>
-        Telefon: 06762 7269<br>
-        E-Mail: info@berg-im-bahnhof.de</p>
-
-        <h3>Wie erfassen wir Ihre Daten?</h3>
-        <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in unser Kontaktformular eingeben.</p>
-        <p>Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
-
-        <h3>Wofür nutzen wir Ihre Daten?</h3>
-        <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
-
-        <h3>Welche Rechte haben Sie bezüglich Ihrer Daten?</h3>
-        <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.</p>
-
-        <h2>2. Hosting</h2>
-        <p>Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v.a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
-
-        <h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>
-        <h3>Datenschutz</h3>
-        <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-
-        <h3>Hinweis zur verantwortlichen Stelle</h3>
-        <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-        <p>Adrian Poprawa<br>Bahnhofstraße 56<br>56288 Kastellaun<br>Telefon: 06762 7269<br>E-Mail: info@berg-im-bahnhof.de</p>
-
-        <h3>Speicherdauer</h3>
-        <p>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben.</p>
-
-        <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-        <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
-
-        <h3>Recht auf Datenübertragbarkeit</h3>
-        <p>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen.</p>
-
-        <h3>Auskunft, Löschung und Berichtigung</h3>
-        <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
-
-        <h3>Recht auf Einschränkung der Verarbeitung</h3>
-        <p>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen.</p>
-
-        <h2>4. Datenerfassung auf dieser Website</h2>
-        <h3>Kontaktformular</h3>
-        <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-        <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
-        <p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt. Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
-
-        <h3>Anfrage per E-Mail, Telefon oder Telefax</h3>
-        <p>Wenn Sie uns per E-Mail, Telefon oder Telefax kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet.</p>
-
-        <h2>5. Plugins und Tools</h2>
-        <h3>Google Fonts (lokal)</h3>
-        <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet nicht statt.</p>
-
-        <p style="margin-top: 3rem; color: var(--gray-400); font-size: 0.85rem;">Stand: März 2026</p>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__group">
+      <button class="mobile-menu__link mobile-menu__link--parent" id="mobileLeistungenToggle" aria-expanded="false">
+        Leistungen
+        <svg class="mobile-menu__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-menu__sub" id="mobileLeistungenSub">
+        <div class="mobile-menu__sub-inner">
+          <a href="innenmalerei.html" class="mobile-menu__sublink">Innenmalerei</a>
+          <a href="aussenfassaden.html" class="mobile-menu__sublink">Außenfassaden</a>
+          <a href="bodenbelaege.html" class="mobile-menu__sublink">Bodenbeläge</a>
+          <a href="waermedaemmung.html" class="mobile-menu__sublink">Wärmedämmung</a>
+          <a href="farbberatung.html" class="mobile-menu__sublink">Farbberatung</a>
+        </div>
+      </div>
+    </div>
+    <a href="../index.html#galerie" class="mobile-menu__link">Galerie</a>
+    <a href="../index.html#ueber-uns" class="mobile-menu__link">Über uns</a>
+    <a href="../index.html#kontakt" class="mobile-menu__link">Kontakt</a>
       </div>
     </div>
   </section>

@@ -30,6 +30,34 @@
     "areaServed": "Kastellaun und Hunsrück"
   }
   </script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Innenmalerei Kastellaun — Berg im Bahnhof Malerfachbetrieb">
+  <meta property="og:description" content="Wände streichen, Spachteltechnik, Tapezierarbeiten — professionelle Innenraumgestaltung vom Malermeister in Kastellaun.">
+  <meta property="og:url" content="https://berg-im-bahnhof.de/pages/innenmalerei.html">
+  <meta property="og:image" content="https://berg-im-bahnhof.de/images/hero-innenmalerei.webp">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Berg im Bahnhof">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Innenmalerei Kastellaun — Berg im Bahnhof Malerfachbetrieb">
+  <meta name="twitter:description" content="Wände streichen, Spachteltechnik, Tapezierarbeiten — professionelle Innenraumgestaltung vom Malermeister in Kastellaun.">
+  <meta name="twitter:image" content="https://berg-im-bahnhof.de/images/hero-innenmalerei.webp">
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://berg-im-bahnhof.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Leistungen", "item": "https://berg-im-bahnhof.de/#leistungen"},
+      {"@type": "ListItem", "position": 3, "name": "Innenmalerei", "item": "https://berg-im-bahnhof.de/pages/innenmalerei.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -45,7 +73,19 @@
       </a>
       <nav class="nav">
         <ul class="nav__list">
-          <li><a href="../index.html#leistungen" class="nav__link">Leistungen</a></li>
+          <li class="nav__item nav__item--dropdown">
+            <a href="../index.html#leistungen" class="nav__link">
+              Leistungen
+              <svg class="nav__chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+            <ul class="nav__dropdown">
+              <li><a href="innenmalerei.html">Innenmalerei</a></li>
+              <li><a href="aussenfassaden.html">Außenfassaden</a></li>
+              <li><a href="bodenbelaege.html">Bodenbeläge</a></li>
+              <li><a href="waermedaemmung.html">Wärmedämmung</a></li>
+              <li><a href="farbberatung.html">Farbberatung</a></li>
+            </ul>
+          </li>
           <li><a href="../index.html#galerie" class="nav__link">Galerie</a></li>
           <li><a href="../index.html#ueber-uns" class="nav__link">Über uns</a></li>
           <li><a href="../index.html#kontakt" class="nav__link">Kontakt</a></li>
@@ -60,7 +100,21 @@
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="../index.html#leistungen" class="mobile-menu__link">Leistungen</a>
+    <div class="mobile-menu__group">
+      <button class="mobile-menu__link mobile-menu__link--parent" id="mobileLeistungenToggle" aria-expanded="false">
+        Leistungen
+        <svg class="mobile-menu__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="mobile-menu__sub" id="mobileLeistungenSub">
+        <div class="mobile-menu__sub-inner">
+          <a href="innenmalerei.html" class="mobile-menu__sublink">Innenmalerei</a>
+          <a href="aussenfassaden.html" class="mobile-menu__sublink">Außenfassaden</a>
+          <a href="bodenbelaege.html" class="mobile-menu__sublink">Bodenbeläge</a>
+          <a href="waermedaemmung.html" class="mobile-menu__sublink">Wärmedämmung</a>
+          <a href="farbberatung.html" class="mobile-menu__sublink">Farbberatung</a>
+        </div>
+      </div>
+    </div>
     <a href="../index.html#galerie" class="mobile-menu__link">Galerie</a>
     <a href="../index.html#ueber-uns" class="mobile-menu__link">Über uns</a>
     <a href="../index.html#kontakt" class="mobile-menu__link">Kontakt</a>
