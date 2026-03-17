@@ -36,6 +36,18 @@ if (navToggle && mobileMenu) {
   });
 }
 
+// --- Mobile Submenu Toggle ---
+const mobileLeistungenToggle = document.getElementById('mobileLeistungenToggle');
+const mobileLeistungenSub = document.getElementById('mobileLeistungenSub');
+
+if (mobileLeistungenToggle && mobileLeistungenSub) {
+  mobileLeistungenToggle.addEventListener('click', () => {
+    const isOpen = mobileLeistungenToggle.getAttribute('aria-expanded') === 'true';
+    mobileLeistungenToggle.setAttribute('aria-expanded', !isOpen);
+    mobileLeistungenSub.classList.toggle('mobile-menu__sub--open');
+  });
+}
+
 // --- Smooth Scroll for Anchor Links ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
@@ -153,22 +165,44 @@ function prevStep(fromStep) {
 function highlightError(selector) {
   const el = document.querySelector(selector);
   if (!el) return;
-  el.style.outline = '2px solid var(--magenta)';
-  el.style.borderRadius = '8px';
+  el.classList.add('service-select--error');
   setTimeout(() => {
-    el.style.outline = '';
-    el.style.borderRadius = '';
-  }, 2000);
+    el.classList.remove('service-select--error');
+  }, 3000);
 }
 
 function highlightField(id) {
   const field = document.getElementById(id);
   if (!field) return;
-  field.style.borderColor = '#E6007E';
+  const group = field.closest('.form-group');
+  if (group) {
+    group.classList.add('form-group--error');
+    // Add error message if not already present
+    let errorEl = group.querySelector('.form-error');
+    if (!errorEl) {
+      errorEl = document.createElement('span');
+      errorEl.className = 'form-error form-error--visible';
+      errorEl.setAttribute('role', 'alert');
+      errorEl.textContent = 'Bitte füllen Sie dieses Feld aus.';
+      if (id === 'email' && field.value && !isValidEmail(field.value)) {
+        errorEl.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+      }
+      group.appendChild(errorEl);
+    } else {
+      errorEl.classList.add('form-error--visible');
+    }
+  }
   field.focus();
-  setTimeout(() => {
-    field.style.borderColor = '';
-  }, 2000);
+
+  // Clear error on input
+  field.addEventListener('input', function clearError() {
+    if (group) {
+      group.classList.remove('form-group--error');
+      const err = group.querySelector('.form-error');
+      if (err) err.remove();
+    }
+    field.removeEventListener('input', clearError);
+  }, { once: true });
 }
 
 function isValidEmail(email) {
@@ -298,6 +332,16 @@ function closeLightbox() {
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
+});
+
+// Keyboard support for gallery items
+document.querySelectorAll('.gallery__item[role="button"]').forEach(item => {
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openLightbox(item);
+    }
+  });
 });
 
 // --- Active Nav Link ---
