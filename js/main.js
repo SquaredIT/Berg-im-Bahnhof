@@ -249,21 +249,118 @@ function buildSummary() {
   summary.innerHTML = html;
 }
 
-// Form Submit via Formsubmit.co
+// Form Submit via eigenen SMTP-Server
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    // Update subject with selected services
-    const services = Array.from(document.querySelectorAll('input[name="services"]:checked'))
-      .map(cb => cb.value).join(', ');
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-    const subjectField = this.querySelector('input[name="_subject"]');
-    if (subjectField) {
-      subjectField.value = 'Neue Anfrage über Website: ' + services;
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Wird gesendet...</span>';
+
+    try {
+      const formData = new FormData(this);
+
+      const response = await fetch('/api/contact.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        alert('Fehler beim Senden: ' + (result.message || 'Bitte versuchen Sie es erneut.'));
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    } catch (error) {
+      alert('Verbindungsfehler. Bitte versuchen Sie es später erneut.');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
     }
-
-    // Form submits normally via POST to formsubmit.co
   });
+}
+
+// --- Image Upload Preview ---
+const imageInput = document.getElementById('images');
+const imagePreview = document.getElementById('imagePreview');
+const fileUploadArea = document.getElementById('fileUploadArea');
+
+if (imageInput && imagePreview) {
+  let selectedFiles = new DataTransfer();
+
+  imageInput.addEventListener('change', function() {
+    addFiles(this.files);
+  });
+
+  // Drag & Drop
+  if (fileUploadArea) {
+    ['dragenter', 'dragover'].forEach(evt => {
+      fileUploadArea.addEventListener(evt, (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.add('file-upload--dragover');
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      fileUploadArea.addEventListener(evt, (e) => {
+        e.preventDefault();
+        fileUploadArea.classList.remove('file-upload--dragover');
+      });
+    });
+
+    fileUploadArea.addEventListener('drop', (e) => {
+      addFiles(e.dataTransfer.files);
+    });
+  }
+
+  function addFiles(files) {
+    const maxFiles = 5;
+    for (const file of files) {
+      if (selectedFiles.items.length >= maxFiles) break;
+      if (!file.type.startsWith('image/')) continue;
+      if (file.size > 10 * 1024 * 1024) continue;
+      selectedFiles.items.add(file);
+    }
+    imageInput.files = selectedFiles.files;
+    renderPreviews();
+  }
+
+  function renderPreviews() {
+    imagePreview.innerHTML = '';
+    for (let i = 0; i < selectedFiles.files.length; i++) {
+      const file = selectedFiles.files[i];
+      const thumb = document.createElement('div');
+      thumb.className = 'file-upload__thumb';
+
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      img.alt = file.name;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'file-upload__thumb-remove';
+      removeBtn.innerHTML = '&times;';
+      removeBtn.addEventListener('click', () => {
+        const dt = new DataTransfer();
+        for (let j = 0; j < selectedFiles.files.length; j++) {
+          if (j !== i) dt.items.add(selectedFiles.files[j]);
+        }
+        selectedFiles = dt;
+        imageInput.files = selectedFiles.files;
+        renderPreviews();
+      });
+
+      thumb.appendChild(img);
+      thumb.appendChild(removeBtn);
+      imagePreview.appendChild(thumb);
+    }
+  }
 }
 
 // --- Before/After Slider ---

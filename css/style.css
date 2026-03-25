@@ -2644,3 +2644,132 @@ img::after {
     animation: none;
   }
 }
+
+/* --- WhatsApp / Contact Options --- */
+.contact-options {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-option--whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+.contact-option--whatsapp:hover {
+  background: #1ebe5d;
+}
+
+.contact-options__divider {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-light, #888);
+}
+
+/* --- File Upload --- */
+.file-upload {
+  position: relative;
+}
+
+.file-upload__input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.file-upload__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 1.5rem;
+  border: 2px dashed var(--border, #d1d5db);
+  border-radius: 12px;
+  background: var(--bg-subtle, #f9fafb);
+  text-align: center;
+  color: var(--text-light, #888);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.file-upload__label svg {
+  opacity: 0.5;
+}
+
+.file-upload__label span {
+  font-weight: 500;
+  color: var(--text, #333);
+}
+
+.file-upload__label small {
+  font-size: 0.8rem;
+}
+
+.file-upload:hover .file-upload__label,
+.file-upload--dragover .file-upload__label {
+  border-color: var(--primary, #2c5530);
+  background: rgba(44, 85, 48, 0.04);
+}
+
+.file-upload__preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.file-upload__thumb {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border, #e5e7eb);
+}
+
+.file-upload__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.file-upload__thumb-remove {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 1;
+  padding: 0;
+}
