@@ -478,8 +478,39 @@ function setActivePageNav() {
 
 setActivePageNav();
 
+// --- WhatsApp mit Formulardaten ---
+function sendWhatsApp() {
+  const services = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+    .map(cb => cb.value).join(', ');
+  const projectType = document.getElementById('project-type').value;
+  const areaSize = document.getElementById('area-size').value;
+  const timeframe = document.getElementById('timeframe').value;
+  const message = document.getElementById('message').value;
+  const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const address = document.getElementById('address').value;
+
+  let text = `Hallo, ich habe eine Anfrage über Ihre Website:\n\n`;
+  text += `*Leistungen:* ${services}\n`;
+  if (projectType) text += `*Objektart:* ${projectType}\n`;
+  if (areaSize) text += `*Fläche:* ${areaSize} m²\n`;
+  if (timeframe) text += `*Zeitraum:* ${timeframe}\n`;
+  if (message) text += `*Beschreibung:* ${message}\n`;
+  text += `\n*Kontaktdaten:*\n`;
+  text += `Name: ${firstName} ${lastName}\n`;
+  if (email) text += `E-Mail: ${email}\n`;
+  if (phone) text += `Telefon: ${phone}\n`;
+  if (address) text += `Adresse: ${address}\n`;
+
+  const encoded = encodeURIComponent(text);
+  window.open(`https://wa.me/491714142608?text=${encoded}`, '_blank');
+}
+
 // --- Expose functions used by inline onclick handlers ---
 window.nextStep = nextStep;
 window.prevStep = prevStep;
 window.openLightbox = openLightbox;
 window.closeLightbox = closeLightbox;
+window.sendWhatsApp = sendWhatsApp;
